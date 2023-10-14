@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>書籍情報編集確認画面</title>
+</head>
+<body style="background:rgb(255, 255, 255)">
+<!--ロゴ（書籍検索ページに推移）-->
+	<a href="topAdmin"><img  style=" width: 250px;height: 40px" src="123.PNG"></a>
+<!--ログアウト-->
+	<form style="float:right" action="adminLoginTop" method="get">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+			type="submit" value="ログアウト">
+	</form>
+<h2  style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(0, 0, 0);font-family: Garamond, serif;color:white">書籍情報編集</h2>
+<center>
+
+<p>以下の内容で書籍情報を編集してもよろしいでしょうか</p>
+
+	<form action="/updateAdmin" method="get">
+		<table border="1">
+			<tr>
+				<th>在庫ID</th>
+				<td><input type="text" name="stockid" readonly th:value="${stockid}"></td>
+			</tr>
+			<tr>
+				<th>タイトル</th>
+				<td><input type="text" name="title" readonly th:value="${title}"></td>
+			</tr>
+			<tr>
+				<th>著者</th>
+				<td><input type="text" name="author" readonly th:value="${author}"></td>
+			</tr>
+			<tr>
+				<th>状態</th>
+				<td>
+					<input type="text"name="looklike" readonly th:value="${looklike}">
+				</td>
+			</tr>
+			<tr>
+				<th>販売価格</th>
+				<td><input type="text" name="price" th:value="${price}"></td>
+			</tr>
+		</table>
+		<p>
+			<input type = "hidden" name = "sellerid" th:value = "${sellerid}">
+			<input type = "hidden" name = "tradingdate" th:value = "${tradingdate}">
+			<input type = "hidden" name = "purchaserid" th:value = "${purchaserid}">
+			<input type = "hidden" name = "comment" th:value = "${comment}">
+			<input 
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 80px;height: 30px"
+			type="submit" value="更新する">
+		</p>
+	</form>
+</center>
+</body>
+</html>

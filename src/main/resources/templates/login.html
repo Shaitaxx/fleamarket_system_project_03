@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>ログイン</title>
+</head>
+<body style="background:rgb(192, 192, 192)">
+
+	<center>
+		<p>
+			<a href="/"><img style=" height: 80px" src="123.PNG"></a>
+		</p>
+		
+	<h2 style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(192, 192, 192);font-family: Garamond, serif;color:white;width: 420px">ログイン</h2>
+	
+	<form action="/login" method="post">
+	
+	<p style="font-family: Garamond, serif;color:rgb(255, 255, 255)">ユーザー登録がお済の方はこちらから</p>
+	
+	<table border="0" cellspacing="" cellpadding="">	
+	<tr>
+		<td><label style="font-family: Garamond, serif;color:rgb(0, 0, 0)" for="memberEmail">メールアドレス:</label></td>
+		<td><input type="text" name="memberEmail" th:value="${memberEmail}"></td>
+	</tr>
+	<tr>
+		<td><label style="font-family: Garamond, serif;color:rgb(0, 0, 0)" for="memberPassward">パスワード:</label>
+		<td><input type="text" name="memberPassward" th:value="${memberPassward}"></td>
+	</tr>
+	</table>
+		<p>
+			<input style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 100px;height: 30px" type="submit" value="ログイン">
+		</p>
+		<span th:text="${emailmessage}" style="font-family: Garamond, serif;color:red"></span><br>
+		<span th:text="${passwardmessage}" style="font-family: Garamond, serif;color:red"></span>
+	</form>
+		<p style="font-family: Garamond, serif;color:rgb(255, 255, 255)">初めての方はこちらから</p>
+		<a style="font-family: Garamond, serif" href="/signupInput">新規登録はこちら</a>
+	</center>
+</body>
+</html>

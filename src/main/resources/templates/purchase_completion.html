@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>購入完了画面</title>
+</head>
+<body style="background:rgb(255, 255, 255)">
+	<!--ロゴ（書籍検索ページに推移）-->
+	<a href="searchTop"><img style=" width: 250px;height: 40px" src="123.PNG"></a>
+	<!--マイページ-->
+
+	<form style="float:right" action="/mypage" method="post">
+		<input type="hidden" name="memberEmail" th:value="${memberEmail}">
+		<input type="hidden" name="memberPassward" th:value="${memberPassward}">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+			type="submit" value="マイページ">
+	</form>
+	<!--ログアウト-->
+	<form style="float:right" action="/" method="post">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px;margin-right:4px"
+			type="submit" value="ログアウト">
+	</form>
+	<!--出品-->
+	<form style="float:right" action="/insertTop" method="post">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(255, 128, 128);width: 120px;height: 30px;margin-right:4px"
+			type="submit" value="出品する">
+	</form>
+		<center>
+	<h2 style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(0, 0, 0);font-family: Garamond, serif;color:white">商品の購入が完了しました</h2>
+
+<form action="/searchTop" method="post">
+	<input
+		style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 200px;height: 30px"
+		type="submit" value="トップページへ戻る">
+</form>
+	</center>
+</body>
+</html>

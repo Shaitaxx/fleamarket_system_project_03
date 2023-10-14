@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>購入履歴画面</title>
+</head>
+
+<body style="background:rgb(255, 255, 255)">
+<a href="searchTop"><img style=" width: 250px;height: 40px" src="123.PNG"></a>
+<!--ログアウト-->
+	<form style="float:right" action="/" method="get">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+			type="submit" value="ログアウト">
+	</form>
+	<!--出品-->
+	<form style="float:right" action="/insertTop" method="post">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(255, 128, 128);width: 120px;height: 30px;margin-right:4px"
+			type="submit" value="出品する">
+	</form>
+
+
+	<h2 style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(0, 0, 0);font-family: Garamond, serif;color:white">購入履歴</h2>
+	<center>
+		<table border="1">
+			<tr>
+				<th>在庫ID</th>
+				<th>ISBN番号</th>
+				<th>タイトル</th>
+				<th>著者</th>
+				<th>分類</th>
+				<th>状態</th>
+				<th>販売価格</th>
+				<th>取引年月日</th>
+				<th>出品者情報</th>
+				<th>コメント</th>
+			</tr>
+
+			<tr th:each="b:${bookList}">
+				<td th:text="${b.stockid}"></td>
+				<td th:text="${b.bookcode}"></td>
+				<td th:text="${b.title}"></td>
+				<td th:text="${b.author}"></td>
+				<td th:text="${b.category}"></td>
+				<td th:text="${b.looklike}"></td>
+				<td th:text="${b.sellingprice}"></td>
+				<td th:text="${b.tradingdate}"></td>
+				<td th:text="${b.sellerid}"></td>
+				<td th:text="${b.comment}"></td>
+			<tr>
+		</table>
+		<p>
+		<form action="/mypage" method="post">
+			<input
+				style="font-family: Garamond, serif;color:rgb(0, 0, 0); background:rgb(255, 255, 255);width: 150px;height: 30px"
+				type="submit" value="マイページへ戻る">
+		</form>
+	</center>
+</body>
+
+</html>

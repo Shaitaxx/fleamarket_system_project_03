@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>教科書出品確認</title>
+</head>
+
+<body style="background:rgb(255, 255, 255)">
+	<!--ロゴ（書籍検索ページに推移）-->
+	<a href="searchTop"><img  style=" width: 250px;height: 40px" src="123.PNG"></a>
+	<!--マイページ-->
+
+	<form style="float:right" action="/mypage" method="post">
+		<input type="hidden" name="memberEmail" th:value="${memberEmail}">
+		<input type="hidden" name="memberPassward" th:value="${memberPassward}">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+			type="submit" value="マイページ">
+	</form>
+	<!--ログアウト-->
+	<form style="float:right" action="/" method="post">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px;margin-right:4px"
+			type="submit" value="ログアウト">
+	</form>
+
+
+	<center>
+	<!--教科書出品-->
+	<h2 style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(0, 0, 0);font-family: Garamond, serif;color:white">出品確認</h2>
+	
+	
+			<form action="/insert" method="get">
+
+				<table border="1" cellspacing="" cellpadding="">
+					<tr>
+						<td><label for="title">タイトル:</label></td>
+						<td><input type="text" name="title" readonly th:value="${title}"></td>
+					</tr>
+					<tr>
+						<td><label for="category">カテゴリ:</label></td>
+						<td><input type="text" name="category" readonly th:value="${category}"></td>
+					</tr>
+					<tr>
+						<td><label for="sellingprice">販売価格:</label></td>
+						<td><input type="text" name="sellingprice" readonly th:value="${sellingprice}"></td>
+					</tr>
+					<tr>
+						<td><label for="author">著者:</label></td>
+						<td><input type="text" name="author" readonly th:value="${author}"></td>
+					</tr>
+					<tr>
+						<td><label for="looklike">状態:</label></td>
+						<td><input type="text" name="looklike" readonly th:value="${looklike}"></td>
+					<tr>
+						<td><label for="bookcode">ISBN番号:</label></td>
+						<td><input type="text" name="bookcode" readonly th:value="${bookcode}"></td>
+					</tr>
+					<tr>
+						<td><label for="comment">コメント:</label></td>
+						<td><input type="text" name="comment" readonly th:value="${comment}"></td>
+					</tr>
+					<!--
+					<tr>
+						<td><label for="img">画像:</label></td>
+						<td><input type="text" name="img" readonly th:value="${img}"></td>
+					</tr>
+					-->
+					
+					</table>
+	<!--
+		画像を添付して下さい<br>
+		<input type="file" name="img" accept=".png, .jpg, .jpeg, .pdf, .doc"><br>
+		-->
+	<p>
+		<span th:each = "member:${memberList}">
+			<input type = "hidden" name = "sellerid" th:value = "${member.memberId}">
+		</span>
+		<input 
+		style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 80px;height: 30px"
+		type="submit" value="出品する">
+	</p>
+	</form>
+
+	</center>
+</body>
+
+</html>

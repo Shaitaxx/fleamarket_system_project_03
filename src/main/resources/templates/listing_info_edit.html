@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>出品書籍情報編集画面</title>
+</head>
+<body style="background:rgb(255, 255, 255)">
+<a href="searchTop"><img style=" width: 250px;height: 40px" src="123.PNG"></a>
+<!--ログアウト-->
+	<form style="float:right" action="/" method="get">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+			type="submit" value="ログアウト">
+	</form>
+	<!--出品-->
+	<form style="float:right" action="/insertTop" method="post">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(255, 128, 128);width: 120px;height: 30px;margin-right:4px"
+			type="submit" value="出品する">
+	</form>
+<h2  style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(0, 0, 0);font-family: Garamond, serif;color:white">出品書籍情報編集</h2>
+<center>
+	<form action="/listingEditConfirm" method="get">
+		<table border="1">
+			<tr>
+				<th>在庫ID</th>
+				<td><input type="text" name="stockid" readonly th:value="${stockid}"></td>
+			</t>
+			<tr>
+				<th>タイトル</th>
+				<td><input type="text" name="title" th:value="${title}"></td>
+			</tr>
+			<tr>
+			    <th>著者</th>
+				<td><input type="text" name="author" th:value="${author}"></td>
+			</tr>
+			<tr>
+				<th>状態</th>
+				<td>
+					<select type="number" size="1" name="looklike">
+			            <option value="0">--</option>
+			            <option value="新品">1.新品</option>
+			            <option value="中古">2.中古</option>
+			        </select><br>
+				</td>
+			</tr>
+			<tr>
+				<th>販売価格</th>
+				<td><input type="text" name="sellingprice" th:value="${sellingprice}"></td>
+			</tr>
+			<tr>
+				<th>コメント</th>
+				<td><input type="text" name="comment" th:value="${comment}"></td>
+			</tr>
+		</table>
+		<p>
+		<span th:text = "${nullMsg}" style = "color : red;"></span>
+		</p>
+		<p>
+			<input type = "hidden" name = "sellerid" th:value = "${sellerid}">
+			<input type = "hidden" name = "tradingdate" th:value = "${tradingdate}">
+			<input type = "hidden" name = "purchaserid" th:value = "${purchaserid}">
+			<input 
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 80px;height: 30px"
+			type="submit" value="確認する">
+		</p>
+	</form>
+
+</center>
+</body>
+</html>

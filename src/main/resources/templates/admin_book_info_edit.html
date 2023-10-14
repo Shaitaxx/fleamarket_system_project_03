@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>書籍更新</title>
+</head>
+
+<body>
+	<!--ロゴ（書籍検索ページに推移）-->
+	<a href="topAdmin"><img style=" width: 250px;height: 40px" src="123.PNG"></a>
+
+	<!--ログアウト-->
+	<form style="float:right" action="adminLoginTop" method="get">
+		<input 
+		style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+		type="submit" value="ログアウト">
+	</form>
+<center>
+	<h1
+	style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(0, 0, 0);font-family: Garamond, serif;color:white"
+	>書籍更新</h1>
+	<form action="/adminlistingEditConfirm" method="get">
+		<table border="1">
+			<tr>
+				<th>在庫ID</th>
+				<td><input type="text" name="stockid" readonly th:value="${stockid}"></td>
+			</tr>
+			<tr>
+				<th>タイトル</th>
+				<td><input type="text" name="title" th:value="${title}"></td>
+			</tr>
+			<tr>
+				<th>著者</th>
+				<td><input type="text" name="author" th:value="${author}"></td>
+			</tr>
+			<tr>
+				<th>状態</th>
+				<td>
+					<select type="number" size="1" name="looklike">
+			            <option value="0">--</option>
+			            <option value="新品">1.新品</option>
+			            <option value="中古品">2.中古品</option>
+			        </select><br>
+				</td>
+			</tr>
+			<tr>
+				<th>販売価格</th>
+				<td><input type="text" name="price" th:value="${price}"></td>
+			</tr>
+		</table>
+		<p>
+			<input type = "hidden" name = "sellerid" th:value = "${sellerid}">
+			<input type = "hidden" name = "tradingdate" th:value = "${tradingdate}">
+			<input type = "hidden" name = "purchaserid" th:value = "${purchaserid}">
+			<input type = "hidden" name = "comment" th:value = "${comment}">
+			<input
+				style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+				type="submit" value="更新する">
+		</p>
+	</form>
+	</center>
+	<a href="">
+		<p style="text-align:center;">contact us</p>
+	</a>
+</body>
+
+</html>

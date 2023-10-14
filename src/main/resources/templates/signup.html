@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>新規会員登録</title>
+</head>
+
+<body>
+	<center>
+		<h2 style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(0, 0, 0);font-family: Garamond, serif;color:white">新規会員登録</h2>
+
+		<form action="/signup" method="post">
+
+			<table border="0" cellspacing="" cellpadding="">
+				<tr>
+					<td><label for="memberName">名前：</label></td>
+					<td><input type="text" name="memberName" placeholder="Name" th:value="${memberName}"></td>
+				</tr>
+				
+				<tr><td></td><td><span th:text="${nameMessage}" style="color:red"></span></td></tr>
+				
+				<tr>
+					<td><label for="memberAddress">住所：</label></td>
+					<td><input type="text" name="memberAddress" placeholder="Address" th:value="${memberAddress}"></td>
+				</tr>
+				
+				<tr><td></td><td><span th:text="${addressMessage}" style="color:red"></span></td></tr>
+				
+				<tr>
+					<td><label for="memberPhone">電話番号：</label></td>
+					<td><input type="text" name="memberPhone" placeholder="Phonenumber" th:value="${memberPhone}"></td>
+				</tr>
+				
+				<tr><td></td><td><span th:text="${phoneMessage}" style="color:red"></span></td></tr>
+				
+				<tr>
+					<td><label for="memberEmail">メールアドレス：</label></td>
+					<td><input type="text" name="memberEmail" placeholder="E-mail" th:value="${memberEmail}"></td>
+				</tr>
+				
+				<tr><td></td><td><span th:text="${emailMessage}" style="color:red"></span></td></tr>
+				
+				<tr>
+					<td><label for="memberBirthday">生年月日：</label></td>
+					<td><input type="text" name="memberBirthday" placeholder="Birthday" th:value="${memberBirthday}"></td>
+				</tr>
+				
+				<tr><td></td><td><span th:text="${birthdayMessage}" style="color:red"></span></td></tr>
+				
+				<tr>
+					<td><label for="memberPassward">パスワード：</label></td>
+					<td><input type="text" name="memberPassward" placeholder="20文字以内" th:value="${memberPassward}"></td>
+				</tr>
+				
+				<tr><td></td><td><span th:text="${passwardMessage}" style="color:red"></span></td></tr>
+				
+				<tr>
+					<td><label for="memberStudentId">学籍番号：</label></td>
+					<td><input type="text" name="memberStudentId" placeholder="StudentID" th:value="${memberStudentId}"></td>
+				</tr>
+				
+				<tr><td></td><td><span th:text="${studentidMessage}" style="color:red"></span></td></tr>
+				
+			</table>
+			<p>
+				<input type="hidden" name="memberSignupDate" th:value="${memberSignupDate}">
+				<input
+					style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 150px;height: 40px"
+					type="submit" value="アカウントを作成する">
+			</p>
+		</form>
+		<p>
+		<a href="/">ログインはこちら</a>
+		</p>
+		</center>
+</body>
+
+</html>

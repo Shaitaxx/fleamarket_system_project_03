@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>管理者ログイン</title>
+</head>
+
+<body>
+	<!--ロゴ（書籍検索ページに推移）-->
+	<img style=" width: 250px;height: 40px" src="123.PNG"></a>
+
+	<center>
+		<p>
+			<img style=" height: 80px" src="123.PNG"></a>
+		</p>
+		
+		<h2 style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(192, 192, 192);font-family: Garamond, serif;color:white;width: 420px">管理者ログイン</h2>
+	
+		<form action="/loginAdmin" method="post"th:object="${login}">
+		
+			<table border="0" cellspacing="" cellpadding="">	
+				<tr>
+					<td><label style="font-family: Garamond, serif;color:rgb(0, 0, 0)" for="email">メールアドレス:</label></td>
+					<td><input type="text" name="email" placeholder="E-mail" th:value="${email}"></td>
+				</tr>
+				<tr><td></td><td><span th:text="${emailmessage}" style="color:red"></span></td></tr>
+				<tr>
+					<td><label style="font-family: Garamond, serif;color:rgb(0, 0, 0)" for="passward">パスワード:</label>
+					<td><input type="text" name="passward" placeholder="20文字以内" th:value="${passward}"></td>
+				</tr>
+				<tr><td></td><td><span th:text="${passwardmessage}" style="color:red"></span></td></tr>
+				<tr><td></td><td><span th:text="${message}" style="color:red"></span></td></tr>
+			</table>
+				<p>
+					<input style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 100px;height: 30px" type="submit" value="ログイン">
+				</p>
+		</form>
+		<a href="/addAdmin">新規登録はこちら</a><br>
+		</p>
+		</center>
+</body>
+
+</html>

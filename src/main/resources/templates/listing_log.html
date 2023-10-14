@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>出品履歴画面</title>
+</head>
+<body style="background:rgb(255, 255, 255)">
+<a href="searchTop"><img style=" width: 250px;height: 40px" src="123.PNG"></a>
+<!--ログアウト-->
+	<form style="float:right" action="/" method="get">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+			type="submit" value="ログアウト">
+	</form>
+	<!--出品-->
+	<form style="float:right" action="/insertTop" method="post">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(255, 128, 128);width: 120px;height: 30px;margin-right:4px"
+			type="submit" value="出品する">
+	</form>
+
+	<h2  style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(0, 0, 0);font-family: Garamond, serif;color:white">出品履歴</h2>
+	<center>
+<table border = "1">
+<tr>
+	<th>在庫ID</th>
+	<th>ISBN番号</th>
+	<th>タイトル</th>
+	<th>著者</th>
+	<th>分類</th>
+	<th>状態</th>
+	<th>販売価格</th>
+	<th>取引年月日</th>
+	<th>購入者情報</th>
+	<th>コメント</th>
+	<th>更新</th>
+</tr>
+
+<tr th:each = "b:${bookList}">
+	<td th:text = "${b.stockid}"></td>
+	<td th:text = "${b.bookcode}"></td>
+	<td th:text = "${b.title}"></td>
+	<td th:text = "${b.author}"></td>
+	<td th:text = "${b.category}"></td>
+	<td th:text = "${b.looklike}"></td>
+	<td th:text = "${b.sellingprice}"></td>
+	<td th:text = "${b.tradingdate}"></td>
+	<td th:text = "${b.purchaserid}"></td>
+	<td th:text = "${b.comment}"></td>
+	<td>
+	<form action = "/listingEdit" method = "get">
+		<input type = "hidden" name = "stockid" th:value = "${b.stockid}">
+		<input type = "hidden" name = "title" th:value = "${b.title}">
+		<input type = "hidden" name = "author" th:value = "${b.author}">
+		<input type = "hidden" name = "category" th:value = "${b.category}">
+		<input type = "hidden" name = "looklike" th:value = "${b.looklike}">
+		<input type = "hidden" name = "sellingprice" th:value = "${b.sellingprice}">
+		<input type = "hidden" name = "tradingdate" th:value = "${b.tradingdate}">
+		<input type = "hidden" name = "purchaserid" th:value = "${b.purchaserid}">
+		<input type = "hidden" name = "sellerid" th:value = "${b.sellerid}">
+		<input type = "hidden" name = "comment" th:value = "${b.comment}">
+		<input 
+		style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 80px;height: 30px"
+		type = "submit" value = "更新">
+	</form>
+	</td>
+</tr>
+</table>
+<p>
+<form action="/mypage" method="post">
+			<input
+				style="font-family: Garamond, serif;color:rgb(0, 0, 0); background:rgb(255, 255, 255);width: 150px;height: 30px"
+				type="submit" value="マイページへ戻る">
+		</form>
+</p>
+	</center>
+</body>
+</html>

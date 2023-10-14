@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>マイページ</title>
+</head>
+<body style="background:rgb(255, 255, 255)">
+<a href="searchTop"><img style=" width: 250px;height: 40px" src="123.PNG"></a>
+<!--ログアウト-->
+	<form style="float:right" action="/" method="get">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+			type="submit" value="ログアウト">
+	</form>
+	<!--出品-->
+	<form style="float:right" action="/insertTop" method="post">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(255, 128, 128);width: 120px;height: 30px;margin-right:4px"
+			type="submit" value="出品する">
+	</form>
+<!--
+	<div style="font-family: Garamond, serif;float:right; margin-right:15px;margin-top:5px">
+		<span th:each="member : ${memberList}">
+			<th:block th:text="${member.memberName}">
+			</th:block>
+			さん、こんにちは !<br>
+		</span>
+	</div>
+	-->
+<h2  style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(0, 0, 0);font-family: Garamond, serif;color:white">マイページ</h2>
+<center>
+<form action = "/mypageEdit" method = "get">
+	<table border = "1">
+	<tr th:each = "m : ${memberList}">
+		<th>会員ID</th>
+		<td><input type = "text" name = "memberId" readonly th:value = "${m.memberId}"></td>
+	</tr>
+	<tr th:each = "m : ${memberList}">
+		<th>名前</th>
+		<td><input type = "text" name = "memberName"  readonly th:value = "${m.memberName}"></td>
+	</tr>
+	<tr th:each = "m : ${memberList}">
+		<th>住所</th>
+		<td><input type = "text" name = "memberAddress"  readonly th:value = "${m.address}"></td>
+	</tr>
+	<tr th:each = "m : ${memberList}">
+		<th>電話番号</th>
+		<td><input type = "text" name = "memberPhone" readonly  th:value = "${m.phoneNumber}">
+	</tr>
+	<tr th:each = "m : ${memberList}">
+		<th>メールアドレス</th>
+		<td><input type = "text" name = "memberEmail" readonly  th:value = "${m.email}"></td>
+	</tr>
+	<tr th:each = "m : ${memberList}">
+		<th>誕生日</th>
+		<td><input type = "text" name = "memberBirthday" readonly  th:value = "${m.birthday}"></td>
+	</tr>
+	<tr th:each = "m : ${memberList}">
+		<th>パスワード</th>
+		<td><input type = "text" name = "memberPassward" readonly  th:value = "${m.passward}"></td>
+	</tr>
+	<tr th:each = "m : ${memberList}">
+		<th>入会日</th>
+	<td><input type = "text" name = "memberSignupDate" readonly  th:value = "${m.signupDate}"></td>
+	</tr>
+	<tr th:each = "m : ${memberList}">
+		<th>学籍番号</th>
+		<td><input type = "text" name = "memberStudentId" readonly  th:value = "${m.studentId}"></td>
+	</tr>
+	</table>
+<p>	
+<input 
+style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 120px;height: 30px" 
+type = "submit" value = "情報を修正する">
+</form>
+</p>
+
+<p>
+<form action = "/deleteConfirmation" method = "post">
+	<span th:each = "m : ${memberList}">
+		<input type = "hidden" name = "memberId" th:value = "${m.memberId}">
+		<input 
+		style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 120px;height: 30px" 
+		type = "submit" value = "退会する">
+	</span>
+</form>
+</p>
+
+<p>
+<form action = "/purchaseLog" method = "get">
+	<span th:each = "m : ${memberList}">
+		<input type = "hidden" name = "memberId" th:value = "${m.memberId}">
+		<input 
+		style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 120px;height: 30px"
+		type = "submit" value = "購入履歴">
+	</span>
+</form>
+</p>
+
+<p>
+<form action = "/listingLog" method = "get">
+	<span th:each = "m : ${memberList}">
+		<input type = "hidden" name = "memberId" th:value = "${m.memberId}">
+		<input 
+		style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 120px;height: 30px"
+		type = "submit" value = "出品履歴">
+	</span>
+</form>
+</p>
+<a href = "/searchTop">トップページへ戻る</a>
+</center>
+</body>
+</html>

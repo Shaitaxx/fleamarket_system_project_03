@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>会員検索</title>
+</head>
+
+<body>
+	<!--ロゴ（書籍検索ページに推移）-->
+	<a href="topAdmin"><img style=" width: 250px;height: 40px" src="123.PNG"></a>
+
+	<!--ログアウト-->
+	<form style="float:right" action="/adminLoginTop" method="get">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+			type="submit" value="ログアウト">
+	</form>
+
+		<!--会員検索-->
+		<center>
+		<h1 style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(0, 0, 0);font-family: Garamond, serif;color:white">会員検索</h1>
+
+		<form action="/memberSearchAdmin" method="get">
+		名前 ： <input type="text" name="name">
+		
+	<!--学籍番号検索-->
+		学籍番号 ： <input type="text" name="studentID">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+			type="submit" value="検索">
+		<p></p>
+	</form>
+
+		<!--書籍一覧-->
+		<div th:if="${memberList != null}">
+			<table border="1">
+				<tr>
+					<th>会員ID</th>
+					<th>名前</th>
+					<th>住所</th>
+					<th>電話番号</th>
+					<th>メールアドレス</th>
+					<th>誕生日</th>
+					<th>パスワード</th>
+					<th>入会日</th>
+					<th>学籍番号</th>
+					<th>会員情報</th>
+					<th>更新</th>
+					<th>削除</th>
+				</tr>
+				<tr th:each="m : ${memberList}">
+					<td th:text="${m.memberId}"></td>
+					<td th:text="${m.memberName}"></td>
+					<td th:text="${m.address}"></td>
+					<td th:text="${m.phoneNumber}"></td>
+					<td th:text="${m.email}"></td>
+					<td th:text="${m.birthday}"></td>
+					<td th:text="${m.passward}"></td>
+					<td th:text="${m.signupDate}"></td>
+					<td th:text="${m.studentId}"></td>
+					<td>
+						<form action="/memberdetailAdmin" method="get">
+							<input type="hidden" name="id" th:value="${m.memberId}">
+							<input type="hidden" name="name" th:value="${m.memberName}">
+							<input type="hidden" name="address" th:value="${m.address}">
+							<input type="hidden" name="phone" th:value="${m.phoneNumber}">
+							<input type="hidden" name="email" th:value="${m.email}">
+							<input type="hidden" name="birthday" th:value="${m.birthday}">
+							<input type="hidden" name="passward" th:value="${m.passward}">
+							<input type="hidden" name="signup" th:value="${m.signupDate}">
+							<input type="hidden" name="studentId" th:value="${m.studentId}">
+							<input
+								style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+								type="submit" value="会員情報">
+						</form>
+					</td>
+					<td>
+						<form action="/showMemberupdateAdmin" method="post">
+							<input type="hidden" name="id" th:value="${m.memberId}">
+							<input type="hidden" name="name" th:value="${m.memberName}">
+							<input type="hidden" name="address" th:value="${m.address}">
+							<input type="hidden" name="phone" th:value="${m.phoneNumber}">
+							<input type="hidden" name="email" th:value="${m.email}">
+							<input
+								style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 40px;height: 30px"
+								type="submit" value="更新">
+						</form>
+					</td>
+					<td>
+						<form action="/admindeleteConfirmation" method="post">
+							<input type="hidden" name="id" th:value="${m.memberId}">
+							<input
+								style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 40px;height: 30px"
+								type="submit" value="削除">
+						</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</center>
+	<a href="/contact">
+		<p style="text-align:center;">contact us</p>
+	</a>
+</body>
+
+</html>

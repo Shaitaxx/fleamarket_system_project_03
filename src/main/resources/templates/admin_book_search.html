@@ -1,0 +1,123 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>管理者書籍検索</title>
+</head>
+
+<body>
+	<!--ロゴ（書籍検索ページに推移）-->
+	<a href="topAdmin"><img style=" width: 250px;height: 40px" src="123.PNG"></a>
+
+	<!--ログアウト-->
+	<form style="float:right" action="adminLoginTop" method="get">
+		<input 
+		style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+		type="submit" value="ログアウト">
+	</form>
+	
+	<center>
+
+		<!--書籍検索-->
+		<h1 style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(0, 0, 0);font-family: Garamond, serif;color:white">管理者書籍検索</h1>
+
+		<form action="/searchAdmin" method="get">
+			タイトル ： <input type="text" name="title_find">
+
+			著者： <input type="text" name="author_find">
+
+			カテゴリ：
+			<select size="1" name="category_find">
+				<option value="">-</option>
+				<option value="総記">1.総記</option>
+				<option value="哲学">2.哲学</option>
+				<option value="歴史">3.歴史</option>
+				<option value="社会科学">4.社会科学</option>
+				<option value="自然科学">5.自然科学</option>
+				<option value="技術">6.技術</option>
+				<option value="産業">7.産業</option>
+				<option value="芸術">8.芸術</option>
+				<option value="言語">9.言語</option>
+				<option value="文学">10.文学</option>
+			</select>
+			<input
+				style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+				type="submit" value="検索">
+		</form><p></p>
+		<!--書籍一覧-->
+		<div th:if="${bookList != null}">
+			<table border="1">
+				<tr>
+					<th>書籍コード</th>
+					<th>書籍名</th>
+					<th>著者</th>
+					<th>カテゴリ</th>
+					<th>状態</th>
+					<th>値段</th>
+					<th>書籍情報</th>
+					<th>更新</th>
+					<th>削除</th>
+				</tr>
+				<tr th:each="book:${bookList}">
+					<td th:text="${book.stockid}"></td>
+					<td th:text="${book.title}"></td>
+					<td th:text="${book.author}"></td>
+					<td th:text="${book.category}"></td>
+					<td th:text="${book.looklike}"></td>
+					<td th:text="${book.sellingprice}"></td>
+					<td>
+						<form action="/detailAdmin" method="get">
+							<input type="hidden" name="bookcode" th:value="${book.bookcode}">
+							<input type="hidden" name="stockid" th:value="${book.stockid}">
+							<input type="hidden" name="title" th:value="${book.title}">
+							<input type="hidden" name="author" th:value="${book.author}">
+							<input type="hidden" name="category" th:value="${book.category}">
+							<input type="hidden" name="price" th:value="${book.sellingprice}">
+							<input type="hidden" name="sellerid" th:value="${book.sellerid}">
+							<input type="hidden" name="looklike" th:value="${book.looklike}">
+							<input
+								style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+								type="submit" value="書籍情報">
+						</form>
+					</td>
+					<td>
+						<form action="/showEditAdmin" method="get">
+							<input type="hidden" name="stockid" th:value="${book.stockid}">
+							<input type="hidden" name="title" th:value="${book.title}">
+							<input type="hidden" name="author" th:value="${book.author}">
+							<input type="hidden" name="category" th:value="${book.category}">
+							<input type="hidden" name="price" th:value="${book.sellingprice}">
+							<input type="hidden" name="looklike" th:value="${book.looklike}">
+							<input
+								style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 40px;height: 30px"
+								type="submit" value="更新">
+						</form>
+					</td>
+					<td>
+						<form action="/bookdeleteconfirmationAdmin" method="get">
+							<input type="hidden" name="bookcode" th:value="${book.bookcode}">
+							<input type="hidden" name="stockid" th:value="${book.stockid}">
+							<input type="hidden" name="title" th:value="${book.title}">
+							<input type="hidden" name="author" th:value="${book.author}">
+							<input type="hidden" name="category" th:value="${book.category}">
+							<input type="hidden" name="price" th:value="${book.sellingprice}">
+							<input type="hidden" name="sellerid" th:value="${book.sellerid}">
+							<input type="hidden" name="looklike" th:value="${book.looklike}">
+							<input
+								style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 40px;height: 30px"
+								type="submit" value="削除">
+						</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</center>
+	<a href="/contact">
+		<p style="text-align:center;">contact us</p>
+	</a>
+</body>
+
+</html>

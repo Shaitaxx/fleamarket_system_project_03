@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>書籍削除確認</title>
+</head>
+
+<body>
+	<!--ロゴ（書籍検索ページに推移）-->
+	<a href="topAdmin"><img style=" width: 250px;height: 40px" src="123.PNG"></a>
+
+	<!--ログアウト-->
+	<form style="float:right" action="adminLoginTop" method="get">
+		<input 
+		style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+		type="submit" value="ログアウト">
+	</form>
+	
+	<center>
+		<h1 style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(0, 0, 0);font-family: Garamond, serif;color:white">最終確認</h1>
+	
+	<form action="/deleteAdmin" method="get">
+		<table border="1">
+			<tr>
+				<th>在庫ID</th>
+				<td><input type="text" name="stockid" readonly th:value="${stockid}"></td>
+			</tr>
+			<tr>
+				<th>出品者情報</th>
+				<td><input type="text" name="sellerid" readonly th:value="${sellerid}"></td>
+			</tr>
+			<tr>
+				<th>タイトル</th>
+				<td><input type="text" name="title" readonly th:value="${title}"></td>
+			</tr>
+			<tr>
+				<th>ISBN</th>
+				<td><input type="text" name="bookcode" readonly th:value="${bookcode}"></td>
+			</tr>
+			<tr>
+				<th>分類</th>
+				<td><input type="text" name="category" readonly th:value="${category}"></td>
+			</tr>
+			<tr>
+				<th>著者</th>
+				<td><input type="text" name="author" readonly th:value="${author}"></td>
+			</tr>
+			<tr>
+				<th>値段</th>
+				<td><input type="text" name="price" readonly th:value="${price}"></td>
+			</tr>
+			<tr>
+				<th>状態</th>
+				<td><input type="text" name="looklike" readonly th:value="${looklike}"></td>
+			</tr>
+		</table>
+		<p>
+			<input
+				style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 150px;height: 30px"
+				type="submit" value="書籍情報を削除する">
+		</p>
+	</form>
+
+		<form action="/searchTopAdmin" method="get">
+			<p><input
+				style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+				type="submit" value="もどる"></p>
+		</form>
+	</center>
+	<a href="">
+		<p style="text-align:center;">contact us</p>
+	</a>
+</body>
+
+</html>

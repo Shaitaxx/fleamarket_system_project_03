@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>購入画面</title>
+</head>
+<body>
+	<a href="searchTop"><img style=" width: 250px;height: 40px" src="123.PNG"></a>
+	<form style="float:right" action="/mypage" method="get">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px"
+			type="submit" value="マイページ">
+	</form>
+	<!--ログアウト-->
+	<form style="float:right" action="/" method="get">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(192, 192, 192);width: 80px;height: 30px;margin-right:4px"
+			type="submit" value="ログアウト">
+	</form>
+	<form style="float:right" action="/insertTop" method="get">
+		<input
+			style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(255, 128, 128);width: 120px;height: 30px;margin-right:4px"
+			type="submit" value="出品する">
+	</form>
+	<center>
+		<h1 style="text-align:center;background:rgb(128, 128, 128);
+	border:1px solid rgb(0, 0, 0);font-family: Garamond, serif;color:white">購入画面</h1>
+		<h3 style="font-family: Garamond, serif;">購入内容をご確認の上、「購入する」をクリックしてください。</h3>
+		<p>
+<table border="1">
+	<tr th:each = "book:${bookList}">
+		<th>在庫ID</th>
+		<td th:text="${book.stockid}"></td>
+	</tr>
+	<tr th:each = "book:${bookList}">
+		<th>出品者情報</th>
+		<td th:text="${book.sellerid}"></td>
+	</tr>
+	<tr th:each = "book:${bookList}">
+		<th>タイトル</th>
+		<td th:text="${book.title}"></td>
+	</tr>
+	<tr th:each = "book:${bookList}">
+		<th>ISBN</th>
+		<td th:text="${book.bookcode}"></td>
+	</tr>
+	<tr th:each = "book:${bookList}">
+		<th>分類</th>
+		<td th:text="${book.category}"></td>
+	</tr>
+	<tr th:each = "book:${bookList}">
+		<th>著者</th>
+		<td th:text="${book.author}"></td>
+	</tr>
+	<tr th:each = "book:${bookList}">
+		<th>販売価格</th>
+		<td th:text="${book.sellingprice}"></td>
+	</tr>
+	<tr th:each = "book:${bookList}">
+		<th>状態</th>
+		<td th:text="${book.looklike}"></td>
+	</tr>
+</table>
+
+<p>
+<form action = "/purchaseCompletion" method = "post">
+<table border="0" cellspacing="" cellpadding="">
+	<tr>
+	<td>カード番号：</td>
+	<td><input type = "text" name = "card_number" readonly th:value = "${card_number}"></td>
+	</tr>
+	<tr>
+	<td>有効期限：</td>
+	<td><input type = "text" name = "expiration_date" readonly th:value = "${expiration_date}"></td>
+	</tr>
+	<tr>
+	<td>カード名義：</td>
+	<td><input type = "text" name = "card_holder" readonly th:value = "${card_holder}"></td>
+	</tr>
+	<tr>
+	<td>セキュリティコード：</td>
+	<td><input type = "text" name = "security_code" readonly th:value = "${security_code}"></td>
+	</tr>
+</table>
+	<p>
+		<span th:each = "member:${memberList}">
+			<input type = "hidden" name = "purchaserid" th:value = "${member.memberId}">
+		</span>
+		<span th:each = "book:${bookList}">
+			<input type = "hidden" name = "stockid" th:value = "${book.stockid}">
+		</span>
+		<input 
+		style="font-family: Garamond, serif;color:rgb(255, 255, 255); background:rgb(128, 128, 128);width: 80px;height: 30px"
+		type = "submit" value = "購入する">
+	</p>
+</form>
+</p>
+<a href = "/searchTop">トップページへ戻る</a>
+	</center>
+</body>
+</html>
